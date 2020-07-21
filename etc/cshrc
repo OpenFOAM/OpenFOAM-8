@@ -31,7 +31,7 @@
 #------------------------------------------------------------------------------
 
 setenv WM_PROJECT OpenFOAM
-setenv WM_PROJECT_VERSION dev
+setenv WM_PROJECT_VERSION 8
 
 ################################################################################
 # USER EDITABLE PART: Changes made here may be lost with the next upgrade

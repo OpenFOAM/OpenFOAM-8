@@ -102,7 +102,7 @@ then
   =========                 \|
   \\\\\\\\      /  F ield         \| OpenFOAM: The Open Source CFD Toolbox
    \\\\\\\\    /   O peration     \| Website:  https://openfoam\.org
-    \\\\\\\\  /    A nd           \| Version:  (dev|[0-9\.x]+)
+    \\\\\\\\  /    A nd           \| Version:  8|[0-9\.x]+)
      \\\\\\\\/     M anipulation  \|(.|
 )*?
 \\\\\*---------------------------------------------------------------------------\*/"
@@ -406,7 +406,7 @@ checkBanner() # scope, files...
             esac
 
         # Versioned case files
-        elif git grep -q -e "Version:  \(dev\|[0-9.]+\)" $scopeGrep"$file"
+        elif git grep -q -e "Version:  8\|[0-9.]+\)" $scopeGrep"$file"
         then
             if ! git show $scopeShow"$file" | pcregrep -q -M "$dictBanner"
             then
