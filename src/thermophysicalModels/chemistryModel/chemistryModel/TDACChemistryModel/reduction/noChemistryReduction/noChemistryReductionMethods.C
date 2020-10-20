@@ -23,7 +23,7 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "chemistryReductionMethod.H"
+#include "noChemistryReduction.H"
 
 #include "psiReactionThermo.H"
 #include "rhoReactionThermo.H"
@@ -37,12 +37,12 @@ License
 
 namespace Foam
 {
-    forCommonGases(defineChemistryReductionMethod, psiReactionThermo);
-    forCommonGases(defineChemistryReductionMethod, rhoReactionThermo);
+    forCommonGases(makeChemistryReductionMethod, none, psiReactionThermo);
+    forCommonGases(makeChemistryReductionMethod, none, rhoReactionThermo);
 
-    forCommonLiquids(defineChemistryReductionMethod, rhoReactionThermo);
+    forCommonLiquids(makeChemistryReductionMethod, none, rhoReactionThermo);
 
-    forPolynomials(defineChemistryReductionMethod, rhoReactionThermo);
+    forPolynomials(makeChemistryReductionMethod, none, rhoReactionThermo);
 }
 
 

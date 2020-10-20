@@ -30,11 +30,6 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-namespace Foam
-{
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #define defineChemistryReductionMethod(ReactionThermo, ThermoPhysics)          \
                                                                                \
     typedef chemistryReductionMethod<ReactionThermo, ThermoPhysics>            \
@@ -87,9 +82,6 @@ ThermoPhysics::typeName_()                                                     \
         add##chemistryReductionMethod##Method##ReactionThermo##ThermoPhysics##\
 dictionaryConstructorToTable_;
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-} // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

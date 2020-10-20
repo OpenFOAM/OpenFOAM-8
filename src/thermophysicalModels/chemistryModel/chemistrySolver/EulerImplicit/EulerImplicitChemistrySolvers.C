@@ -23,7 +23,10 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "chemistryReductionMethod.H"
+#include "EulerImplicit.H"
+
+#include "StandardChemistryModel.H"
+#include "TDACChemistryModel.H"
 
 #include "psiReactionThermo.H"
 #include "rhoReactionThermo.H"
@@ -31,18 +34,18 @@ License
 #include "forCommonGases.H"
 #include "forCommonLiquids.H"
 #include "forPolynomials.H"
-#include "makeChemistryReductionMethod.H"
+#include "makeChemistrySolver.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-    forCommonGases(defineChemistryReductionMethod, psiReactionThermo);
-    forCommonGases(defineChemistryReductionMethod, rhoReactionThermo);
+    forCommonGases(makeChemistrySolvers, EulerImplicit, psiReactionThermo);
+    forCommonGases(makeChemistrySolvers, EulerImplicit, rhoReactionThermo);
 
-    forCommonLiquids(defineChemistryReductionMethod, rhoReactionThermo);
+    forCommonLiquids(makeChemistrySolvers, EulerImplicit, rhoReactionThermo);
 
-    forPolynomials(defineChemistryReductionMethod, rhoReactionThermo);
+    forPolynomials(makeChemistrySolvers, EulerImplicit, rhoReactionThermo);
 }
 
 

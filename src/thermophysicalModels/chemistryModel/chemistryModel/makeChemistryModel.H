@@ -30,11 +30,6 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-namespace Foam
-{
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #define defineChemistryModel(Model, ReactionThermo)                            \
                                                                                \
     typedef Model<ReactionThermo> Model##ReactionThermo;                       \
@@ -55,9 +50,6 @@ namespace Foam
         thermo                                                                 \
     );
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-} // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

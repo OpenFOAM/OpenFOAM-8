@@ -23,7 +23,9 @@ License
 
 \*---------------------------------------------------------------------------*/
 
-#include "chemistryReductionMethod.H"
+#include "chemistryTabulationMethod.H"
+
+#include "ISAT.H"
 
 #include "psiReactionThermo.H"
 #include "rhoReactionThermo.H"
@@ -31,18 +33,18 @@ License
 #include "forCommonGases.H"
 #include "forCommonLiquids.H"
 #include "forPolynomials.H"
-#include "makeChemistryReductionMethod.H"
+#include "makeChemistryTabulationMethod.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 namespace Foam
 {
-    forCommonGases(defineChemistryReductionMethod, psiReactionThermo);
-    forCommonGases(defineChemistryReductionMethod, rhoReactionThermo);
+    forCommonGases(makeChemistryTabulationMethod, ISAT, psiReactionThermo);
+    forCommonGases(makeChemistryTabulationMethod, ISAT, rhoReactionThermo);
 
-    forCommonLiquids(defineChemistryReductionMethod, rhoReactionThermo);
+    forCommonLiquids(makeChemistryTabulationMethod, ISAT, rhoReactionThermo);
 
-    forPolynomials(defineChemistryReductionMethod, rhoReactionThermo);
+    forPolynomials(makeChemistryTabulationMethod, ISAT, rhoReactionThermo);
 }
 
 

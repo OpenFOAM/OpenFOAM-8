@@ -30,11 +30,6 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-namespace Foam
-{
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #define defineChemistryTabulationMethod(ReactionThermo, ThermoPhysics)         \
                                                                                \
     typedef chemistryTabulationMethod<ReactionThermo, ThermoPhysics>           \
@@ -87,9 +82,6 @@ ThermoPhysics::typeName_()                                                     \
         add##chemistryTabulationMethod##Method##ReactionThermo##ThermoPhysics##\
 dictionaryConstructorToTable_;
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-} // End namespace Foam
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 

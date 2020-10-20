@@ -30,11 +30,6 @@ License
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-namespace Foam
-{
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
 #define defineChemistrySolver(Model, ReactionThermo, ThermoPhysics)            \
                                                                                \
     typedef Model<ReactionThermo, ThermoPhysics>                               \
@@ -74,9 +69,36 @@ namespace Foam
         add##Solver##Model##ReactionThermo##ThermoPhysics##\
 thermoConstructorToTable_;
 
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+#define defineChemistrySolvers(ReactionThermo, ThermoPhysics)                  \
+    defineChemistrySolver                                                      \
+    (                                                                          \
+        StandardChemistryModel,                                                \
+        ReactionThermo,                                                        \
+        ThermoPhysics                                                          \
+    );                                                                         \
+    defineChemistrySolver                                                      \
+    (                                                                          \
+        TDACChemistryModel,                                                    \
+        ReactionThermo,                                                        \
+        ThermoPhysics                                                          \
+    )
 
-} // End namespace Foam
+#define makeChemistrySolvers(Solver, ReactionThermo, ThermoPhysics)            \
+    makeChemistrySolver                                                        \
+    (                                                                          \
+        Solver,                                                                \
+        StandardChemistryModel,                                                \
+        ReactionThermo,                                                        \
+        ThermoPhysics                                                          \
+    );                                                                         \
+    makeChemistrySolver                                                        \
+    (                                                                          \
+        Solver,                                                                \
+        TDACChemistryModel,                                                    \
+        ReactionThermo,                                                        \
+        ThermoPhysics                                                          \
+    )
+
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
