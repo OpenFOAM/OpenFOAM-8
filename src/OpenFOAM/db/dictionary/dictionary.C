@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -371,27 +371,25 @@ const Foam::entry* Foam::dictionary::lookupScopedSubEntryPtr
                     << exit(FatalIOError);
             }
 
-            dictionary dict(ifs);
+            dictionary dict(keyword, *this, ifs);
 
-            const Foam::entry* hmm = dict.lookupScopedEntryPtr
+            const Foam::entry* entryPtr = dict.lookupScopedEntryPtr
             (
                 localKeyword,
                 recursive,
                 patternMatch
             );
 
-            if (!hmm)
+            if (!entryPtr)
             {
-                FatalIOErrorInFunction
-                (
-                    dict
-                )   << "keyword " << localKeyword
+                FatalIOErrorInFunction(dict)
+                    << "keyword " << localKeyword
                     << " is undefined in dictionary "
                     << dict.name()
                     << exit(FatalIOError);
             }
 
-            return hmm->clone(*this).ptr();
+            return entryPtr->clone(*this).ptr();
         }
     }
 }
