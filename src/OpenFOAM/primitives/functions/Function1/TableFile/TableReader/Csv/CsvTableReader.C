@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -245,16 +245,7 @@ void Foam::TableReaders::Csv<Type>::write(Ostream& os) const
 
     writeEntry(os, "nHeaderLine", nHeaderLine_);
     writeEntry(os, "refColumn", refColumn_);
-    if (os.format() == IOstream::BINARY)
-    {
-        os.format(IOstream::ASCII);
-        writeEntry(os, "componentColumns", componentColumns_);
-        os.format(IOstream::BINARY);
-    }
-    else
-    {
-        writeEntry(os, "componentColumns", componentColumns_);
-    }
+    writeEntry(os, "componentColumns", componentColumns_);
     writeEntry(os, "separator", string(separator_));
     writeEntry(os, "mergeSeparators", mergeSeparators_);
 }
