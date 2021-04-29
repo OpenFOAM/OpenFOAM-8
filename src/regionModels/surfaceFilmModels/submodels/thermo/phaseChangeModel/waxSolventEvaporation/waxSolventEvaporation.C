@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2017-2019 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2017-2021 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -311,6 +311,8 @@ void waxSolventEvaporation::correctModel
             // hVap[celli] = filmThermo.hl(pc, Tloc);
         }
     }
+
+    reduce(filmPresent, orOp<bool>());
 
     const dimensionedScalar rho0Bydt
     (
