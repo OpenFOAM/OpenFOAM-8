@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2020 OpenFOAM Foundation
+    \\  /    A nd           | Copyright (C) 2011-2021 OpenFOAM Foundation
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
@@ -775,14 +775,17 @@ Foam::ISstream& Foam::ISstream::getLine(string& s)
     setState(is_.rdstate());
     lineNumber_++;
 
-    while (s.back() == '\\')
+    if (s.size())
     {
-        string contLine;
-        getline(is_, contLine);
-        setState(is_.rdstate());
-        lineNumber_++;
-        s.pop_back();
-        s += contLine;
+        while (s.back() == '\\')
+        {
+            string contLine;
+            getline(is_, contLine);
+            setState(is_.rdstate());
+            lineNumber_++;
+            s.pop_back();
+            s += contLine;
+        }
     }
 
     return *this;
