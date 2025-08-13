@@ -1,0 +1,3 @@
+pimpleELAMFoam.C
+
+EXE = $(FOAM_APPBIN)/pimpleELAMFoam
