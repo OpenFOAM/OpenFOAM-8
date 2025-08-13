@@ -1,0 +1,3 @@
+simpleELAMFoam.C
+
+EXE = $(FOAM_APPBIN)/simpleELAMFoam
